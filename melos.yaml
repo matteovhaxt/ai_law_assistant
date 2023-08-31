@@ -1,0 +1,19 @@
+name: law_assistant
+
+# repository: https://github.com/invertase/melos
+
+sdkPath: auto
+
+packages:
+  - packages/*
+  - apps/*
+
+scripts:
+  analyze:
+    exec: dart analyze .
+  refresh:
+    run: melos clean && melos bootstrap
+  test:
+    exec: flutter test
+  coverage:
+    exec: flutter text --coverage
