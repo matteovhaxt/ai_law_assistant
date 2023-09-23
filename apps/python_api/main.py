@@ -4,12 +4,14 @@ from langchain.chains import ConversationChain
 from dotenv import load_dotenv, find_dotenv
 import os
 from langchain.document_loaders import PyPDFLoader
-from IPython.display import display, Markdown
 from langchain.output_parsers import ResponseSchema
 from langchain.output_parsers import StructuredOutputParser
 from langchain.prompts import ChatPromptTemplate
 from langchain.chains import LLMChain
 from langchain.chains import SequentialChain
+import pprint
+
+logger = pprint.PrettyPrinter(indent=4).pprint
 #%%
 env_path = find_dotenv('.env')
 _ = load_dotenv(env_path)
@@ -30,7 +32,7 @@ pdf_data = ''
 for page in pages:
     pdf_data += page.page_content
 
-print(pdf_data)
+logger(pdf_data)
 #%%
 category_schema = ResponseSchema(
     name='category',
@@ -60,14 +62,14 @@ response_schemas = [
 output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
 format_instructions = output_parser.get_format_instructions()
 
-print(format_instructions)
+logger(format_instructions)
 
 template = """\
 Act as a legal advisor and assistant to the user. Provide accurate, truthful \
 information on legal matters without giving legal advice. If uncertain or \
 beyond your knowledge, admit it. Prioritize user\'s interests, respect \
-confidentiality, and maintain professionalism. Answer in the language the user \
-asked the question in.
+confidentiality, and maintain professionalism. Answer in the language of the \
+document.
 
 For the following text, extract the following information:
 
@@ -87,7 +89,7 @@ Text:
 
 prompt = ChatPromptTemplate.from_template(template)
 
-print(prompt.messages)
+logger(prompt.messages)
 
 chain = LLMChain(llm=llm, prompt=prompt, output_key='summary')
 #%%
@@ -104,7 +106,7 @@ result = process_chain({
     }, )
 #%%
 parsed_result = output_parser.parse(result['summary'])
-print(parsed_result['category'])
-print(parsed_result['summary'])
-print(parsed_result['citations'])
+logger(parsed_result['category'])
+logger(parsed_result['summary'])
+logger(parsed_result['citations'])
 # %%
