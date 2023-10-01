@@ -23,7 +23,7 @@ mixin _$InputState {
   bool get isLoading => throw _privateConstructorUsedError;
   SubmitMethod? get method => throw _privateConstructorUsedError;
   String? get text => throw _privateConstructorUsedError;
-  List<int>? get pdfBytes => throw _privateConstructorUsedError;
+  String? get pdfContent => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,10 +38,7 @@ abstract class $InputStateCopyWith<$Res> {
       _$InputStateCopyWithImpl<$Res, InputState>;
   @useResult
   $Res call(
-      {bool isLoading,
-      SubmitMethod? method,
-      String? text,
-      List<int>? pdfBytes});
+      {bool isLoading, SubmitMethod? method, String? text, String? pdfContent});
 }
 
 /// @nodoc
@@ -60,7 +57,7 @@ class _$InputStateCopyWithImpl<$Res, $Val extends InputState>
     Object? isLoading = null,
     Object? method = freezed,
     Object? text = freezed,
-    Object? pdfBytes = freezed,
+    Object? pdfContent = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -75,10 +72,10 @@ class _$InputStateCopyWithImpl<$Res, $Val extends InputState>
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String?,
-      pdfBytes: freezed == pdfBytes
-          ? _value.pdfBytes
-          : pdfBytes // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
+      pdfContent: freezed == pdfContent
+          ? _value.pdfContent
+          : pdfContent // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -92,10 +89,7 @@ abstract class _$$_InputStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool isLoading,
-      SubmitMethod? method,
-      String? text,
-      List<int>? pdfBytes});
+      {bool isLoading, SubmitMethod? method, String? text, String? pdfContent});
 }
 
 /// @nodoc
@@ -112,7 +106,7 @@ class __$$_InputStateCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? method = freezed,
     Object? text = freezed,
-    Object? pdfBytes = freezed,
+    Object? pdfContent = freezed,
   }) {
     return _then(_$_InputState(
       isLoading: null == isLoading
@@ -127,10 +121,10 @@ class __$$_InputStateCopyWithImpl<$Res>
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String?,
-      pdfBytes: freezed == pdfBytes
-          ? _value._pdfBytes
-          : pdfBytes // ignore: cast_nullable_to_non_nullable
-              as List<int>?,
+      pdfContent: freezed == pdfContent
+          ? _value.pdfContent
+          : pdfContent // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -139,11 +133,7 @@ class __$$_InputStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_InputState implements _InputState {
   const _$_InputState(
-      {this.isLoading = false,
-      this.method,
-      this.text,
-      final List<int>? pdfBytes})
-      : _pdfBytes = pdfBytes;
+      {this.isLoading = false, this.method, this.text, this.pdfContent});
 
   factory _$_InputState.fromJson(Map<String, dynamic> json) =>
       _$$_InputStateFromJson(json);
@@ -155,19 +145,12 @@ class _$_InputState implements _InputState {
   final SubmitMethod? method;
   @override
   final String? text;
-  final List<int>? _pdfBytes;
   @override
-  List<int>? get pdfBytes {
-    final value = _pdfBytes;
-    if (value == null) return null;
-    if (_pdfBytes is EqualUnmodifiableListView) return _pdfBytes;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final String? pdfContent;
 
   @override
   String toString() {
-    return 'InputState(isLoading: $isLoading, method: $method, text: $text, pdfBytes: $pdfBytes)';
+    return 'InputState(isLoading: $isLoading, method: $method, text: $text, pdfContent: $pdfContent)';
   }
 
   @override
@@ -179,13 +162,14 @@ class _$_InputState implements _InputState {
                 other.isLoading == isLoading) &&
             (identical(other.method, method) || other.method == method) &&
             (identical(other.text, text) || other.text == text) &&
-            const DeepCollectionEquality().equals(other._pdfBytes, _pdfBytes));
+            (identical(other.pdfContent, pdfContent) ||
+                other.pdfContent == pdfContent));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, method, text,
-      const DeepCollectionEquality().hash(_pdfBytes));
+  int get hashCode =>
+      Object.hash(runtimeType, isLoading, method, text, pdfContent);
 
   @JsonKey(ignore: true)
   @override
@@ -206,7 +190,7 @@ abstract class _InputState implements InputState {
       {final bool isLoading,
       final SubmitMethod? method,
       final String? text,
-      final List<int>? pdfBytes}) = _$_InputState;
+      final String? pdfContent}) = _$_InputState;
 
   factory _InputState.fromJson(Map<String, dynamic> json) =
       _$_InputState.fromJson;
@@ -218,7 +202,7 @@ abstract class _InputState implements InputState {
   @override
   String? get text;
   @override
-  List<int>? get pdfBytes;
+  String? get pdfContent;
   @override
   @JsonKey(ignore: true)
   _$$_InputStateCopyWith<_$_InputState> get copyWith =>

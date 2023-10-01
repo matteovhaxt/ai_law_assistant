@@ -1,5 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_app/core/core.dart';
+import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 part 'cubit.g.dart';
 part 'cubit.freezed.dart';
@@ -24,9 +25,14 @@ class SubmitCubit extends Cubit<InputState> with HydratedMixin<InputState> {
       type: FileType.custom,
       allowedExtensions: ['pdf'],
     );
+    final PdfDocument document = PdfDocument(
+      inputBytes: result!.files.first.bytes,
+    );
+    final String content = PdfTextExtractor(document).extractText();
+    document.dispose();
     emit(
       state.copyWith(
-        pdfBytes: result?.files.single.bytes,
+        pdfContent: content,
         isLoading: false,
       ),
     );

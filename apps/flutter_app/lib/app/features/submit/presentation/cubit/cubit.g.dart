@@ -11,8 +11,7 @@ _$_InputState _$$_InputStateFromJson(Map<String, dynamic> json) =>
       isLoading: json['isLoading'] as bool? ?? false,
       method: $enumDecodeNullable(_$SubmitMethodEnumMap, json['method']),
       text: json['text'] as String?,
-      pdfBytes:
-          (json['pdfBytes'] as List<dynamic>?)?.map((e) => e as int).toList(),
+      pdfContent: json['pdfContent'] as String?,
     );
 
 Map<String, dynamic> _$$_InputStateToJson(_$_InputState instance) =>
@@ -20,7 +19,7 @@ Map<String, dynamic> _$$_InputStateToJson(_$_InputState instance) =>
       'isLoading': instance.isLoading,
       'method': _$SubmitMethodEnumMap[instance.method],
       'text': instance.text,
-      'pdfBytes': instance.pdfBytes,
+      'pdfContent': instance.pdfContent,
     };
 
 const _$SubmitMethodEnumMap = {
