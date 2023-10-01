@@ -2,40 +2,52 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug",
+            "name": "Flutter Debug",
             "request": "launch",
             "type": "dart",
             "flutterMode": "debug",
+            "program": "apps/flutter_app/lib/main.dart",
             "args": [
                 "--dart-define=USE_FIREBASE_EMULATOR=true"
               ]
         },
         {
-            "name": "Staging",
+            "name": "Flutter Staging",
             "request": "launch",
             "type": "dart",
             "flutterMode": "debug",
+            "program": "apps/flutter_app/lib/main.dart",
             "args": [
                 "--dart-define=USE_FIREBASE_EMULATOR=false"
               ]
         },
         {
-            "name": "Profile",
+            "name": "Flutter Profile",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile",
+            "program": "apps/flutter_app/lib/main.dart",
             "args": [
                 "--dart-define=USE_FIREBASE_EMULATOR=false"
               ]
         },
         {
-            "name": "Release",
+            "name": "Flutter Release",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release",
+            "program": "apps/flutter_app/lib/main.dart",
             "args": [
                 "--dart-define=USE_FIREBASE_EMULATOR=false"
               ]
+        },
+        {
+            "name": "Python Debug",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
         }
     ]
 }
