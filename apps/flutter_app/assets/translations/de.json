@@ -40,5 +40,10 @@
             "pdf": "PDF hochladen",
             "camera": "Foto aufnehmen"
         }
+    },
+    "submit": {
+        "choose_file": "Klicker hier um eine Datei auszuwählen.",
+        "send": "Absenden",
+        "analysis_in_progress": "Dein Dokument wird analysiert. Das kann einen Moment dauern."
     }
 }

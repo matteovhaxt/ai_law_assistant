@@ -20,10 +20,13 @@ InputState _$InputStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$InputState {
-  bool get isLoading => throw _privateConstructorUsedError;
-  SubmitMethod? get method => throw _privateConstructorUsedError;
+  bool get isPickingPdf => throw _privateConstructorUsedError;
+  bool get isUploadingToStorage => throw _privateConstructorUsedError;
+  bool get isMakingRequest => throw _privateConstructorUsedError;
   String? get text => throw _privateConstructorUsedError;
-  String? get pdfContent => throw _privateConstructorUsedError;
+  String? get pdfName => throw _privateConstructorUsedError;
+  List<int>? get pdfData => throw _privateConstructorUsedError;
+  String? get pdfUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,7 +41,13 @@ abstract class $InputStateCopyWith<$Res> {
       _$InputStateCopyWithImpl<$Res, InputState>;
   @useResult
   $Res call(
-      {bool isLoading, SubmitMethod? method, String? text, String? pdfContent});
+      {bool isPickingPdf,
+      bool isUploadingToStorage,
+      bool isMakingRequest,
+      String? text,
+      String? pdfName,
+      List<int>? pdfData,
+      String? pdfUrl});
 }
 
 /// @nodoc
@@ -54,27 +63,42 @@ class _$InputStateCopyWithImpl<$Res, $Val extends InputState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLoading = null,
-    Object? method = freezed,
+    Object? isPickingPdf = null,
+    Object? isUploadingToStorage = null,
+    Object? isMakingRequest = null,
     Object? text = freezed,
-    Object? pdfContent = freezed,
+    Object? pdfName = freezed,
+    Object? pdfData = freezed,
+    Object? pdfUrl = freezed,
   }) {
     return _then(_value.copyWith(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
+      isPickingPdf: null == isPickingPdf
+          ? _value.isPickingPdf
+          : isPickingPdf // ignore: cast_nullable_to_non_nullable
               as bool,
-      method: freezed == method
-          ? _value.method
-          : method // ignore: cast_nullable_to_non_nullable
-              as SubmitMethod?,
+      isUploadingToStorage: null == isUploadingToStorage
+          ? _value.isUploadingToStorage
+          : isUploadingToStorage // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isMakingRequest: null == isMakingRequest
+          ? _value.isMakingRequest
+          : isMakingRequest // ignore: cast_nullable_to_non_nullable
+              as bool,
       text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String?,
-      pdfContent: freezed == pdfContent
-          ? _value.pdfContent
-          : pdfContent // ignore: cast_nullable_to_non_nullable
+      pdfName: freezed == pdfName
+          ? _value.pdfName
+          : pdfName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pdfData: freezed == pdfData
+          ? _value.pdfData
+          : pdfData // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+      pdfUrl: freezed == pdfUrl
+          ? _value.pdfUrl
+          : pdfUrl // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -89,7 +113,13 @@ abstract class _$$_InputStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool isLoading, SubmitMethod? method, String? text, String? pdfContent});
+      {bool isPickingPdf,
+      bool isUploadingToStorage,
+      bool isMakingRequest,
+      String? text,
+      String? pdfName,
+      List<int>? pdfData,
+      String? pdfUrl});
 }
 
 /// @nodoc
@@ -103,27 +133,42 @@ class __$$_InputStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? isLoading = null,
-    Object? method = freezed,
+    Object? isPickingPdf = null,
+    Object? isUploadingToStorage = null,
+    Object? isMakingRequest = null,
     Object? text = freezed,
-    Object? pdfContent = freezed,
+    Object? pdfName = freezed,
+    Object? pdfData = freezed,
+    Object? pdfUrl = freezed,
   }) {
     return _then(_$_InputState(
-      isLoading: null == isLoading
-          ? _value.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
+      isPickingPdf: null == isPickingPdf
+          ? _value.isPickingPdf
+          : isPickingPdf // ignore: cast_nullable_to_non_nullable
               as bool,
-      method: freezed == method
-          ? _value.method
-          : method // ignore: cast_nullable_to_non_nullable
-              as SubmitMethod?,
+      isUploadingToStorage: null == isUploadingToStorage
+          ? _value.isUploadingToStorage
+          : isUploadingToStorage // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isMakingRequest: null == isMakingRequest
+          ? _value.isMakingRequest
+          : isMakingRequest // ignore: cast_nullable_to_non_nullable
+              as bool,
       text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String?,
-      pdfContent: freezed == pdfContent
-          ? _value.pdfContent
-          : pdfContent // ignore: cast_nullable_to_non_nullable
+      pdfName: freezed == pdfName
+          ? _value.pdfName
+          : pdfName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pdfData: freezed == pdfData
+          ? _value._pdfData
+          : pdfData // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+      pdfUrl: freezed == pdfUrl
+          ? _value.pdfUrl
+          : pdfUrl // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -133,24 +178,47 @@ class __$$_InputStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_InputState implements _InputState {
   const _$_InputState(
-      {this.isLoading = false, this.method, this.text, this.pdfContent});
+      {this.isPickingPdf = false,
+      this.isUploadingToStorage = false,
+      this.isMakingRequest = false,
+      this.text,
+      this.pdfName,
+      final List<int>? pdfData,
+      this.pdfUrl})
+      : _pdfData = pdfData;
 
   factory _$_InputState.fromJson(Map<String, dynamic> json) =>
       _$$_InputStateFromJson(json);
 
   @override
   @JsonKey()
-  final bool isLoading;
+  final bool isPickingPdf;
   @override
-  final SubmitMethod? method;
+  @JsonKey()
+  final bool isUploadingToStorage;
+  @override
+  @JsonKey()
+  final bool isMakingRequest;
   @override
   final String? text;
   @override
-  final String? pdfContent;
+  final String? pdfName;
+  final List<int>? _pdfData;
+  @override
+  List<int>? get pdfData {
+    final value = _pdfData;
+    if (value == null) return null;
+    if (_pdfData is EqualUnmodifiableListView) return _pdfData;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final String? pdfUrl;
 
   @override
   String toString() {
-    return 'InputState(isLoading: $isLoading, method: $method, text: $text, pdfContent: $pdfContent)';
+    return 'InputState(isPickingPdf: $isPickingPdf, isUploadingToStorage: $isUploadingToStorage, isMakingRequest: $isMakingRequest, text: $text, pdfName: $pdfName, pdfData: $pdfData, pdfUrl: $pdfUrl)';
   }
 
   @override
@@ -158,18 +226,29 @@ class _$_InputState implements _InputState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_InputState &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            (identical(other.method, method) || other.method == method) &&
+            (identical(other.isPickingPdf, isPickingPdf) ||
+                other.isPickingPdf == isPickingPdf) &&
+            (identical(other.isUploadingToStorage, isUploadingToStorage) ||
+                other.isUploadingToStorage == isUploadingToStorage) &&
+            (identical(other.isMakingRequest, isMakingRequest) ||
+                other.isMakingRequest == isMakingRequest) &&
             (identical(other.text, text) || other.text == text) &&
-            (identical(other.pdfContent, pdfContent) ||
-                other.pdfContent == pdfContent));
+            (identical(other.pdfName, pdfName) || other.pdfName == pdfName) &&
+            const DeepCollectionEquality().equals(other._pdfData, _pdfData) &&
+            (identical(other.pdfUrl, pdfUrl) || other.pdfUrl == pdfUrl));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, isLoading, method, text, pdfContent);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isPickingPdf,
+      isUploadingToStorage,
+      isMakingRequest,
+      text,
+      pdfName,
+      const DeepCollectionEquality().hash(_pdfData),
+      pdfUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -187,22 +266,31 @@ class _$_InputState implements _InputState {
 
 abstract class _InputState implements InputState {
   const factory _InputState(
-      {final bool isLoading,
-      final SubmitMethod? method,
+      {final bool isPickingPdf,
+      final bool isUploadingToStorage,
+      final bool isMakingRequest,
       final String? text,
-      final String? pdfContent}) = _$_InputState;
+      final String? pdfName,
+      final List<int>? pdfData,
+      final String? pdfUrl}) = _$_InputState;
 
   factory _InputState.fromJson(Map<String, dynamic> json) =
       _$_InputState.fromJson;
 
   @override
-  bool get isLoading;
+  bool get isPickingPdf;
   @override
-  SubmitMethod? get method;
+  bool get isUploadingToStorage;
+  @override
+  bool get isMakingRequest;
   @override
   String? get text;
   @override
-  String? get pdfContent;
+  String? get pdfName;
+  @override
+  List<int>? get pdfData;
+  @override
+  String? get pdfUrl;
   @override
   @JsonKey(ignore: true)
   _$$_InputStateCopyWith<_$_InputState> get copyWith =>

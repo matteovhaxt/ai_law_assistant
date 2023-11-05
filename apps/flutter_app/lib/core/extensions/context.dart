@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/app/features/auth/auth.dart';
 import 'package:flutter_app/core/core.dart';
 
 extension UIContext on BuildContext {
@@ -10,6 +12,9 @@ extension UIContext on BuildContext {
   ThemeData get theme => Theme.of(this);
   ScaffoldMessengerState get messenger => ScaffoldMessenger.of(this);
   MediaQueryData get mediaQuery => MediaQuery.of(this);
+
+  // state
+  User? get user => read<AuthCubit>().currentUser;
 
   // debug
   Logger get logger => Logger();

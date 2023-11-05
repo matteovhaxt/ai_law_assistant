@@ -8,22 +8,23 @@ part of 'cubit.dart';
 
 _$_InputState _$$_InputStateFromJson(Map<String, dynamic> json) =>
     _$_InputState(
-      isLoading: json['isLoading'] as bool? ?? false,
-      method: $enumDecodeNullable(_$SubmitMethodEnumMap, json['method']),
+      isPickingPdf: json['isPickingPdf'] as bool? ?? false,
+      isUploadingToStorage: json['isUploadingToStorage'] as bool? ?? false,
+      isMakingRequest: json['isMakingRequest'] as bool? ?? false,
       text: json['text'] as String?,
-      pdfContent: json['pdfContent'] as String?,
+      pdfName: json['pdfName'] as String?,
+      pdfData:
+          (json['pdfData'] as List<dynamic>?)?.map((e) => e as int).toList(),
+      pdfUrl: json['pdfUrl'] as String?,
     );
 
 Map<String, dynamic> _$$_InputStateToJson(_$_InputState instance) =>
     <String, dynamic>{
-      'isLoading': instance.isLoading,
-      'method': _$SubmitMethodEnumMap[instance.method],
+      'isPickingPdf': instance.isPickingPdf,
+      'isUploadingToStorage': instance.isUploadingToStorage,
+      'isMakingRequest': instance.isMakingRequest,
       'text': instance.text,
-      'pdfContent': instance.pdfContent,
+      'pdfName': instance.pdfName,
+      'pdfData': instance.pdfData,
+      'pdfUrl': instance.pdfUrl,
     };
-
-const _$SubmitMethodEnumMap = {
-  SubmitMethod.text: 'text',
-  SubmitMethod.pdf: 'pdf',
-  SubmitMethod.camera: 'camera',
-};

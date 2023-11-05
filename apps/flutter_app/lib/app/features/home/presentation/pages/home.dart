@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/app/features/home/presentation/widgets/input_selection.dart';
 import 'package:flutter_app/core/core.dart';
-import 'package:wolt_responsive_layout_grid/wolt_responsive_layout_grid.dart';
 
-import '../../../submit/submit.dart';
 import '../widgets/widgets.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -18,38 +15,34 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: const HomeFloatingActionButton(),
       drawer: const HomeDrawer(),
-      body: WoltResponsiveLayoutGrid.centered(
-        centerWidgetColumnCount: context.wideCenterWidgetFlex,
-        child: Card(
-          child: Padding(
-            padding: EdgeInsets.all(context.padding.extraBig),
-            child: UIRow.gap(
-              context.padding.medium,
-              children: [
-                Flexible(
-                  child: HomeInputSelection(
-                    text: 'home.input_selection.text'.tr(),
-                    icon: Icons.text_snippet,
-                    onPressed: () =>
-                        context.go('/submit?method=${SubmitMethod.text.name}'),
-                  ),
+      body: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight:
+                context.mediaQuery.size.height * (context.isDesktop ? .5 : .8),
+            maxWidth:
+                context.mediaQuery.size.width * (context.isDesktop ? .5 : .8),
+          ),
+          child: Card(
+            child: Padding(
+              padding: EdgeInsets.all(context.padding.extraBig),
+              child: OutlinedButton(
+                onPressed: () => context.go('/submit'),
+                child: UIColumn.gap(
+                  context.padding.medium,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const Icon(
+                      Icons.edit_document,
+                    ),
+                    Text(
+                      'home.input_selection.pdf'.tr(),
+                      textAlign: TextAlign.center,
+                    )
+                  ],
                 ),
-                Flexible(
-                  child: HomeInputSelection(
-                    text: 'home.input_selection.pdf'.tr(),
-                    icon: Icons.edit_document,
-                    onPressed: () =>
-                        context.go('/submit?method=${SubmitMethod.pdf.name}'),
-                  ),
-                ),
-                Flexible(
-                  child: HomeInputSelection(
-                    text: 'home.input_selection.camera'.tr(),
-                    icon: Icons.camera_alt,
-                    onPressed: () {},
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ),
